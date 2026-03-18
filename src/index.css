@@ -46,13 +46,13 @@
 }
 
 html {
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
   background-color: #000;
   color: var(--color-dark-100);
@@ -89,7 +89,7 @@ body {
 
 @layer components {
   header {
-    @apply w-screen fixed top-0 left-0 z-50 flex-center bg-black min-h-[7vh];
+    @apply w-full fixed top-0 left-0 z-50 flex-center bg-black min-h-[7vh];
 
     nav {
       @apply container mx-auto flex-between px-5 2xl:px-0;
@@ -113,7 +113,7 @@ body {
   }
 
   #hero {
-    @apply h-fit lg:h-[80vh] col-center mt-40 lg:mt-20 2xl:mt-[7vh];
+    @apply min-h-[80vh] flex flex-col items-center justify-start pt-32 lg:pt-28 mt-20 lg:mt-10;
 
     div {
       @apply relative z-10 col-center lg:translate-y-16;
