@@ -1,12 +1,9 @@
-import React, { useRef } from 'react';
+import { useMediaQuery } from "react-responsive";
+import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { useMediaQuery } from 'react-responsive';
 
-const ShowCase = () => {
-    const contentRef = useRef();
-
-    const isTablet = useMediaQuery({ query: '(max-width:1024px)' })
+const Showcase = () => {
+    const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
 
     useGSAP(() => {
         if (!isTablet) {
@@ -18,43 +15,47 @@ const ShowCase = () => {
                     scrub: true,
                     pin: true,
                 }
-            })
+            });
 
-            timeline.to(".mask img", {
-                transform: 'scale(1.2)',
-            }).to('.content', { opacity: 1, y: 0, ease: 'power1.in' })
+            timeline
+                .to('.mask img', {
+                    transform: 'scale(1.1)'
+                }).to('.content', { opacity: 1, y: 0, ease: 'power1.in' });
         }
-    }, [isTablet]);
+    }, [isTablet])
 
     return (
         <section id="showcase">
-            <div className="media w-full">
+            <div className="media">
                 <video src="/videos/game.mp4" loop muted autoPlay playsInline />
                 <div className="mask">
                     <img src="/mask-logo.svg" />
                 </div>
             </div>
 
-            <div className="content" ref={contentRef}>
+            <div className="content">
                 <div className="wrapper">
                     <div className="lg:max-w-md">
                         <h2>Rocket Chip</h2>
 
                         <div className="space-y-5 mt-7 pe-10">
-                            <p>Introducing
-                                <span className="text-white"> M4, the most powerful chip ever created for a personal computer.</span></p>
                             <p>
-                                <span className="text-white-500">With up to <span className="text-white">10 CPU cores</span> and up to <span className="text-white">16 GPU cores</span>, the M4 chip can <span className="text-white">handle the most demanding tasks with ease.</span></span>
+                                Introducing {" "}
+                                <span className="text-white">
+                                    M4, the next generation of Apple silicon
+                                </span>
+                                . M4 powers
                             </p>
                             <p>
-                                <span className="text-white-500">The <span className="text-white">M4 chip</span> is also <span className="text-white">the most energy-efficient chip</span> ever created for a personal computer.</span>
+                                It drives Apple Intelligence on iPad Pro, so you can write, create, and accomplish more with ease. All in a design that’s unbelievably thin, light, and powerful.
                             </p>
-
-                            <p className="text-primary"><a href="#" className='underline'>Learn more about Apple Intelligence</a></p>
-
+                            <p>
+                                A brand-new display engine delivers breathtaking precision, color accuracy, and brightness. And a next-gen GPU with hardware-accelerated ray tracing brings console-level graphics to your fingertips.
+                            </p>
+                            <p className="text-primary">Learn more about Apple Intelligence</p>
                         </div>
-
                     </div>
+
                     <div className="max-w-3xs space-y-14">
                         <div className="space-y-2">
                             <p>Up to</p>
@@ -72,5 +73,4 @@ const ShowCase = () => {
         </section>
     )
 }
-
-export default ShowCase;
+export default Showcase
